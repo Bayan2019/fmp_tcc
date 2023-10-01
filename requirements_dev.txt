@@ -10,3 +10,12 @@ twine==1.14.0
 
 pytest==6.2.4
 
+numpy>=1.10
+pandas
+datetime
+python-dateutil
+statsmodels
+urllib3
+certifi
+plotly
+json5

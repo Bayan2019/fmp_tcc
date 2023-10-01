@@ -36,17 +36,17 @@ setup(
     keywords='fmp_tcc',
     name='fmp_tcc',
     packages=find_packages(include=['fmp_tcc', 'fmp_tcc.*']),
-    install_requires=[
-        'numpy>=1.10',
-        'pandas',
-        'datetime',
-        'python-dateutil',
-        'statsmodels',
-        'urllib3',
-        'certifi',
-        'plotly',
-        'json5'
-    ],
+    # install_requires=[
+    #     'numpy>=1.10',
+    #     'pandas',
+    #     'datetime',
+    #     'python-dateutil',
+    #     'statsmodels',
+    #     'urllib3',
+    #     'certifi',
+    #     'plotly',
+    #     'json5'
+    # ],
     test_suite='tests',
     tests_require=test_requirements,
     url='https://github.com/Bayan2019/fmp_tcc',
