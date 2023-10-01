@@ -47,8 +47,8 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'fmp_tcc'
-copyright = "2023, Bayan Saparbayeva, AlexandreBayan Saparbayeva, Alexandre Courtois Auberger, Bayan Saparbayeva, and Vish Patel"
-author = "Bayan Saparbayeva, AlexandreBayan Saparbayeva, Alexandre Courtois Auberger, Bayan Saparbayeva, and Vish Patel"
+copyright = "2023, Alexandre Courtois Auberger, Bayan Saparbayeva, and Vish Patel"
+author = "Alexandre Courtois Auberger, Bayan Saparbayeva, and Vish Patel"
 
 # The version info for the project you're documenting, acts as replacement
 # for |version| and |release|, also used in various other places throughout
@@ -129,7 +129,7 @@ latex_elements = {
 latex_documents = [
     (master_doc, 'fmp_tcc.tex',
      'fmp_tcc Documentation',
-     'Bayan Saparbayeva, AlexandreBayan Saparbayeva, Alexandre Courtois Auberger, Bayan Saparbayeva, and Vish Patel', 'manual'),
+     'Alexandre Courtois Auberger, Bayan Saparbayeva, and Vish Patel', 'manual'),
 ]
 
 
