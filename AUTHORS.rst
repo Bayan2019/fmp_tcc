@@ -5,9 +5,11 @@ Credits
 Development Lead
 ----------------
 
-* Bayan Saparbayeva, AlexandreBayan Saparbayeva, Alexandre Courtois Auberger, Bayan Saparbayeva, and Vish Patel <saparbayevabt@gmail.com>
+* Alexandre Courtois Auberger, and Bayan Saparbayeva <saparbayevabt@gmail.com>
 
 Contributors
 ------------
+
+* Vish Patel
 
 None yet. Why not be the first?

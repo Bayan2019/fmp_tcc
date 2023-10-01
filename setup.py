@@ -15,7 +15,7 @@ requirements = [ ]
 test_requirements = ['pytest>=3', ]
 
 setup(
-    author="Bayan Saparbayeva, AlexandreBayan Saparbayeva, Alexandre Courtois Auberger, Bayan Saparbayeva, and Vish Patel",
+    author="Alexandre Courtois Auberger, Bayan Saparbayeva, and Vish Patel",
     author_email='saparbayevabt@gmail.com',
     python_requires='>=3.6',
     classifiers=[
