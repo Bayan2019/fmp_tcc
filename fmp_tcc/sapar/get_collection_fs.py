@@ -92,7 +92,7 @@ def get_fs(apikey: str, ticks: list, period: str = 'annual',
 
     for fs in fss:
         if (metrics[fs] == None):
-            attributes_fs = attributes['bs']
+            attributes_fs = attributes[fs]
         elif (metrics[fs] == []):
             attributes_fs = []
         else:
