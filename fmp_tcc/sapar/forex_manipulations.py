@@ -87,8 +87,6 @@ def convert_data_to_common_currency(df, apikey: str='apikey', base: str='USD', d
                 end_date = end_date.strftime('%Y-%m-%d')
                 x = df.loc[i, 'reportedCurrency'] + base;
                 data = get_exchange_rate(apikey=apikey, exchange=x, start_date=start_date, end_date=end_date)
-                print(x)
-                print(data)
                 data = pd.DataFrame(data["historical"])
                 data['date'] = pd.to_datetime(data['date'])
                 data.set_index('date', inplace=True)
