@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-from datetime import datetime
+from datetime import datetime, timedelta
 
 # from get_forex_data import get_exchange_rate
 from .get_collection_fs import company_profile, get_fs_some
@@ -77,10 +77,10 @@ def convert_data_to_common_currency(df, apikey: str='apikey', base: str='USD', d
         if (df.loc[i, 'reportedCurrency'], df.loc[i, 'date']) in ex_currendies.keys():
             exchange_rate.loc[i, 'exchange_rate'] = ex_currendies[(df.loc[i, 'reportedCurrency'], df.loc[i, 'date'])]
         else:
-            date = datetime.datetime.strptime(df.loc[i, 'date'], '%Y-%m-%d');
-            start_date = date - datetime.timedelta(days=3);
+            date = datetime.strptime(df.loc[i, 'date'], '%Y-%m-%d');
+            start_date = date - timedelta(days=3);
             start_date = start_date.strftime('%Y-%m-%d')
-            end_date = date  + datetime.timedelta(days=4);
+            end_date = date  + timedelta(days=4);
             end_date = end_date.strftime('%Y-%m-%d')
             x = df.loc[i, 'reportedCurrency'] + base;
             data = get_exchange_rate(apikey=apikey, exchange=x, start_date=start_date, end_date=end_date)
