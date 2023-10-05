@@ -73,38 +73,35 @@ def convert_data_to_common_currency(df, apikey: str='apikey', base: str='USD', d
     ex_currendies = {}
 
     for i in df.index:
-      if (df.loc[i, 'reportedCurrency'] == 'USD'):
-        if (i%30==0):
-            print(df.loc[i, 'reportedCurrency']);
-    else :
-        if (df.loc[i, 'reportedCurrency'], df.loc[i, 'date']) in ex_currendies.keys():
-            exchange_rate.loc[i, 'exchange_rate'] = ex_currendies[(df.loc[i, 'reportedCurrency'], df.loc[i, 'date'])]
-        else:
-            date = datetime.strptime(df.loc[i, 'date'], '%Y-%m-%d');
-            start_date = date - timedelta(days=3);
-            start_date = start_date.strftime('%Y-%m-%d')
-            end_date = date  + timedelta(days=4);
-            end_date = end_date.strftime('%Y-%m-%d')
-            x = df.loc[i, 'reportedCurrency'] + base;
-            data = get_exchange_rate(apikey=apikey, exchange=x, start_date=start_date, end_date=end_date)
-            print(x)
-            print(data)
-            data = pd.DataFrame(data["historical"])
-    #       data = get_exchange_rate(apikey=apikey, exchange=x, start_date=start_date, end_date=end_date)
-    #       # data = fmpsdk.historical_price_full(apikey=apikey, symbol=x, from_date=start_date, to_date=end_date);
-    #       data = pd.DataFrame(data["historical"])
-            data['date'] = pd.to_datetime(data['date'])
-            data.set_index('date', inplace=True)
-            try:
-                exchange_rate.loc[i, 'exchange_rate'] =  np.nanmedian(data.loc[date, 'adjClose'])
-                ex_currendies[(df.loc[i, 'reportedCurrency'], df.loc[i, 'date'])] = exchange_rate.loc[i, 'exchange_rate']
-                print(df.loc[i, 'reportedCurrency'], df.loc[i, 'date'], i, 'try');
-            except: 
-                ser = pd.to_numeric(data['adjClose'], downcast='float')
-                m = np.nanmedian(ser)
-                exchange_rate.loc[i, 'exchange_rate'] = m
-                ex_currendies[(df.loc[i, 'reportedCurrency'], df.loc[i, 'date'])] = exchange_rate.loc[i, 'exchange_rate']
-                print(df.loc[i, 'reportedCurrency'], df.loc[i, 'date'], i, 'except', m);
+        if (df.loc[i, 'reportedCurrency'] == base):
+            if (i%30==0):
+                print(df.loc[i, 'reportedCurrency']);
+        else :
+            if (df.loc[i, 'reportedCurrency'], df.loc[i, 'date']) in ex_currendies.keys():
+                exchange_rate.loc[i, 'exchange_rate'] = ex_currendies[(df.loc[i, 'reportedCurrency'], df.loc[i, 'date'])]
+            else:
+                date = datetime.strptime(df.loc[i, 'date'], '%Y-%m-%d');
+                start_date = date - timedelta(days=3);
+                start_date = start_date.strftime('%Y-%m-%d')
+                end_date = date  + timedelta(days=4);
+                end_date = end_date.strftime('%Y-%m-%d')
+                x = df.loc[i, 'reportedCurrency'] + base;
+                data = get_exchange_rate(apikey=apikey, exchange=x, start_date=start_date, end_date=end_date)
+                print(x)
+                print(data)
+                data = pd.DataFrame(data["historical"])
+                data['date'] = pd.to_datetime(data['date'])
+                data.set_index('date', inplace=True)
+                try:
+                    exchange_rate.loc[i, 'exchange_rate'] =  np.nanmedian(data.loc[date, 'adjClose'])
+                    ex_currendies[(df.loc[i, 'reportedCurrency'], df.loc[i, 'date'])] = exchange_rate.loc[i, 'exchange_rate']
+                    print(df.loc[i, 'reportedCurrency'], df.loc[i, 'date'], i, 'try');
+                except: 
+                    ser = pd.to_numeric(data['adjClose'], downcast='float')
+                    m = np.nanmedian(ser)
+                    exchange_rate.loc[i, 'exchange_rate'] = m
+                    ex_currendies[(df.loc[i, 'reportedCurrency'], df.loc[i, 'date'])] = exchange_rate.loc[i, 'exchange_rate']
+                    print(df.loc[i, 'reportedCurrency'], df.loc[i, 'date'], i, 'except', m);
 
     df_usd = df.copy()
 
