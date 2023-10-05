@@ -64,6 +64,8 @@ def convert_data_to_common_currency(df, apikey: str='apikey', base: str='USD', d
         if (df.loc[i, 'reportedCurrency'] != df.loc[i, 'reportedCurrency']) or (df.loc[i, 'reportedCurrency'] == None):
             df.loc[i, 'reportedCurrency'] = df.loc[i, 'currency']
 
+    df['reportedCurrency'] = df['reportedCurrency'].str.strip()
+
     exchange_rate = df[['symbol', 'date']]
     exchange_rate.loc[df['reportedCurrency']==base, 'exchange_rate'] = 1
 
