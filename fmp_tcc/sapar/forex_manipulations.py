@@ -20,7 +20,7 @@ def get_exchange_rate(apikey: str='apikey', exchange: str='EURUSD', period: str=
     data = get_data_url(url=url)
     return data
 
-def convert_data_common_currency(df, apikey: str='apikey', base: str='USD', data: str='finance'):
+def convert_data_to_common_currency(df, apikey: str='apikey', base: str='USD', data: str='finance'):
     """
     params:
         df -- data-frame numerical values of which we want to convert to commone currendy (base = 'USD')
