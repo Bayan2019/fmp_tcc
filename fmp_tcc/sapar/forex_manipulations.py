@@ -3,6 +3,7 @@ import numpy as np
 from datetime import datetime, timedelta
 
 # from get_forex_data import get_exchange_rate
+from ..courtois.fmp_url import get_data_url
 from .get_collection_fs import company_profile, get_fs_some
 
 def get_exchange_rate(apikey: str='apikey', exchange: str='EURUSD', period: str='daily',\
