@@ -7,13 +7,12 @@ from ..courtois.fmp_url import get_data_url
 from .get_collection_fs import company_profile, get_fs_some
 
 def get_exchange_rate(apikey: str='apikey', exchange: str='EURUSD', period: str='daily',\
-    start_date: str= "2023-10-01", end_date: str='2023-10-04', skipping=[]):
+    start_date: str= "2023-10-01", end_date: str='2023-10-04'):
     """
     params:
         apikey -- to access data from FMP;
         exchange -- required conversion from 'EUR' to 'USD';
         period -- either 'min', or 'hour', or 'daily';
-        skipping -- columns that we don't want to convert;
     return: list of dictionaries
     """
     if period=='daily':
@@ -22,13 +21,14 @@ def get_exchange_rate(apikey: str='apikey', exchange: str='EURUSD', period: str=
     data = get_data_url(url=url)
     return data
 
-def convert_data_to_common_currency(df, apikey: str='apikey', base: str='USD', data: str='finance'):
+def convert_data_to_common_currency(df, apikey: str='apikey', base: str='USD', data: str='finance', skipping=[]):
     """
     params:
         df -- data-frame numerical values of which we want to convert to commone currendy (base = 'USD')
         apikey -- to access data from FMP;
         data -- it can be either 'finance' (data of financial statement usually has data of 'reportedCurrency') or 'stock' 
             (stock data for which we need to inquire currency);
+        skipping -- columns that we don't want to convert;
     return: list of dictionaries
     """
     if 'symbol' not in df.columns:
