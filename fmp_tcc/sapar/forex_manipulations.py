@@ -40,19 +40,21 @@ def convert_data_to_common_currency(df, apikey: str='apikey', base: str='USD', d
     if 'currency' not in df.columns:
         df['currency'] = None
         for ticker in tickers_df:
-            profile = company_profile(apikey=apikey, symbol=ticker)[0]
-            if 'currency' not in profile.keys():
-                if data == 'stock':
-                    df.loc[df['symbol'] == ticker, 'currency'] = \
-                        get_fs_some(apikey=apikey, symbol=ticker, period='quarter', limit=2)[0]['reportedCurrency']
-                elif data == 'finance':
-                    if 'reportedCurrency' in df.columns:
-                        df.loc[df['symbol'] == ticker, 'currency'] = df[df['symbol'] == ticker]['reportedCurrency'].mode()[0]
+            profile = company_profile(apikey=apikey, symbol=ticker)
+            if profile != []:
+                profile = profile[0]
+                if 'currency' not in profile.keys():
+                    if data == 'stock':
+                        df.loc[df['symbol'] == ticker, 'currency'] = \
+                            get_fs_some(apikey=apikey, symbol=ticker, period='quarter', limit=2)[0]['reportedCurrency']
+                    elif data == 'finance':
+                        if 'reportedCurrency' in df.columns:
+                            df.loc[df['symbol'] == ticker, 'currency'] = df[df['symbol'] == ticker]['reportedCurrency'].mode()[0]
                     else:
                         print("We don't have reported currency information for financial data")
                         return False
-            else:
-                df.loc[df['symbol'] == ticker, 'currency'] = profile['currency']
+                else:
+                    df.loc[df['symbol'] == ticker, 'currency'] = profile['currency']
 
 
     df['currency'] = df['currency'].str.replace('ZAc', 'ZAR')
