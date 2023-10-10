@@ -7,12 +7,13 @@ from ..courtois.fmp_url import get_data_url
 from .get_collection_fs import company_profile, get_fs_some
 
 def get_exchange_rate(apikey: str='apikey', exchange: str='EURUSD', period: str='daily',\
-    start_date: str= "2023-10-01", end_date: str='2023-10-04'):
+    start_date: str= "2023-10-01", end_date: str='2023-10-04', skipping=[]):
     """
     params:
         apikey -- to access data from FMP;
         exchange -- required conversion from 'EUR' to 'USD';
         period -- either 'min', or 'hour', or 'daily';
+        skipping -- columns that we don't want to convert;
     return: list of dictionaries
     """
     if period=='daily':
@@ -103,8 +104,10 @@ def convert_data_to_common_currency(df, apikey: str='apikey', base: str='USD', d
 
     df_usd = df.copy()
 
-    for col in df[df.columns.difference(['symbol', 'date', 'reportedCurrency', 'sector',\
-        'industry', 'numberOfShares', 'currency', 'country'])].columns:
+    skipping = list(set(skipping).union(set(['symbol', 'date', 'reportedCurrency', 'sector',\
+        'industry', 'numberOfShares', 'currency', 'country'])))
+
+    for col in df[df.columns.difference(skipping)].columns:
         df_usd[col] = df[col].mul(exchange_rate['exchange_rate'])
         # print(col)
 
