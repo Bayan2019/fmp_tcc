@@ -19,7 +19,7 @@ def calculate_months(start_date: str):
     months = abs(difference.months) + abs(12*difference.years)
     return months
 
-def get_fs_some(apikey: str, symbol:str, period: str='annual', limit: int=10, finance: str='balance-sheet-statement'):
+def get_fs_some(apikey: str='apikey', symbol: str='AAPL', period: str='annual', limit: int=10, finance: str='balance-sheet-statement'):
     """
     params:
         apikey -- to access data from FMP;
@@ -34,7 +34,7 @@ def get_fs_some(apikey: str, symbol:str, period: str='annual', limit: int=10, fi
     data = get_data_url(url=url)
     return data
 
-def company_profile(apikey: str, symbol: str):
+def company_profile(apikey: str='apikey', symbol: str='AAPL'):
     url = (f'https://financialmodelingprep.com/api/v3/profile/{symbol}?apikey={apikey}')
     data = get_data_url(url=url)
     return data
