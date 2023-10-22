@@ -13,6 +13,8 @@ def get_exchange_rate(apikey: str='apikey', exchange: str='EURUSD', period: str=
         apikey -- to access data from FMP;
         exchange -- required conversion from 'EUR' to 'USD';
         period -- either 'min', or 'hour', or 'daily';
+        start_date -- the date from which we collecting data, should from 2005-01-01
+        end_date -- the date to which we collecting data
     return: list of dictionaries
     """
     if period=='daily':
