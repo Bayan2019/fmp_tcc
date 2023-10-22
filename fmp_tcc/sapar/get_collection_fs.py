@@ -48,7 +48,6 @@ def company_profile(apikey: str='apikey', symbol: str='AAPL'):
 def get_fs(apikey: str='apikey', ticks: list=['AAPL', 'MSFT'], period: str = 'annual', 
            with_progress: bool = False, include_sic: bool = False, 
            bs_m=None, is_m=None, cf_m=None, ev_m=None, start_date: str= "N/A"):
-
     """
     params:
         apikey -- to access data from FMP;
