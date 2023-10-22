@@ -48,9 +48,16 @@ def get_fs(apikey: str='apikey', ticks: list=['AAPL', 'MSFT'], period: str = 'an
         apikey -- to access data from FMP;
         ticks -- list of tickers;
         period -- either 'annual' or 'quarter';
-        limit -- number of data points;
-        finance -- can be 'balance-sheet-statement', or 'income-statement', or 'cash-flow-statement', or 'enterprise-values', 
-            or 'ratios'
+        with_progress -- if you want to visualize progress;
+        include_sic -- if you want also extract sector and industry information
+        bs_m -- the information from balance sheet like 'inventory', 'totalAssets', 'accountPayables' and so on...
+                on default extracts maximum information from balance sheet
+        is_m -- the information from balance sheet like 'revenue', 'grossProfit', 'eps', and so on...
+                on default extracts maximum information from income statement
+        cf_m -- the information from balance sheet like 'capitalExpenditure', 'dividendsPaid', 'operatingCashFlow' and so on...
+                on default extracts maximum information from cash flow statement
+        ev_m -- the information from balance sheet like 'enterpriseValue', 'marketCapitalization', 'numberOfShares', and 'stockPrice'
+        start_date -- from which date we want to get financial statements
     return: data frame of financial statements
     """
     
