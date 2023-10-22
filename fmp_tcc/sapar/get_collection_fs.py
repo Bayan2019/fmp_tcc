@@ -39,9 +39,20 @@ def company_profile(apikey: str='apikey', symbol: str='AAPL'):
     data = get_data_url(url=url)
     return data
 
-def get_fs(apikey: str, ticks: list, period: str = 'annual', 
+def get_fs(apikey: str='apikey', ticks: list=['AAPL', 'MSFT'], period: str = 'annual', 
            with_progress: bool = False, include_sic: bool = False, 
            bs_m=None, is_m=None, cf_m=None, ev_m=None, start_date: str= "N/A"):
+
+    """
+    params:
+        apikey -- to access data from FMP;
+        ticks -- list of tickers;
+        period -- either 'annual' or 'quarter';
+        limit -- number of data points;
+        finance -- can be 'balance-sheet-statement', or 'income-statement', or 'cash-flow-statement', or 'enterprise-values', 
+            or 'ratios'
+    return: data frame of financial statements
+    """
     
     if start_date == "N/A":
         limit = 100;
