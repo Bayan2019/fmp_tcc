@@ -5,7 +5,7 @@ from ..courtois.fmp_url import get_data_url
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
 
-def get_stocks_fmp(apikey: str='apikey', symbols: list=['AAPL', 'MSFT', 'GOOG', '018260.KS' 'SONY'], start_date: str='1986-01-01'):
+def get_stocks_fmp(apikey: str='apikey', symbols: list=['AAPL', 'MSFT', 'GOOG', '018260.KS', 'SONY'], start_date: str='1986-01-01'):
     """
     params:
         apikey -- to access data from FMP;
@@ -18,7 +18,7 @@ def get_stocks_fmp(apikey: str='apikey', symbols: list=['AAPL', 'MSFT', 'GOOG', 
     data = get_data_url(url=url)
     return data
 
-def get_stocks(apikey: str='apikey', symbols: list=['AAPL', 'MSFT', 'GOOG', '018260.KS' 'SONY'], start_date: str='1986-01-01', 
+def get_stocks(apikey: str='apikey', symbols: list=['AAPL', 'MSFT', 'GOOG', '018260.KS', 'SONY'], start_date: str='1986-01-01', 
                 step:int=5, with_progress: bool=False):
     """
     params:
