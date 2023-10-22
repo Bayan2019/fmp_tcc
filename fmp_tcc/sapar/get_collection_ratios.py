@@ -12,8 +12,18 @@ from dateutil.relativedelta import relativedelta
 #     data = get_data_url(url=url)
 #     return data
 
-def get_ratios(apikey: str, ticks: list, period: str = 'annual', 
+def get_ratios(apikey: str='apikey', ticks: list=['AAPL', 'MSFT'], period: str = 'annual', 
            with_progress: bool = False, ratios=[], start_date: str= "N/A"):
+    """
+    params:
+        apikey -- to access data from FMP;
+        ticks -- list of tickers;
+        period -- either 'annual' or 'quarter';
+        with_progress -- if you want to visualize progress;
+        ratios -- list of ratios;
+        start_date -- from which date we want to get financial statements
+    return: data frame of ratios
+    """
     
     if start_date == "N/A":
         limit = 100;

@@ -35,6 +35,12 @@ def get_fs_some(apikey: str='apikey', symbol: str='AAPL', period: str='annual', 
     return data
 
 def company_profile(apikey: str='apikey', symbol: str='AAPL'):
+    """
+    params:
+        apikey -- to access data from FMP;
+        symbol -- ticker of company;
+    return: list of dictionaries
+    """
     url = (f'https://financialmodelingprep.com/api/v3/profile/{symbol}?apikey={apikey}')
     data = get_data_url(url=url)
     return data
