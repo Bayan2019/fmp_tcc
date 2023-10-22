@@ -10,8 +10,7 @@ def get_stocks_fmp(apikey: str='apikey', symbols: list=['AAPL', 'MSFT', 'GOOG', 
     params:
         apikey -- to access data from FMP;
         symbols -- list of tickers of companies, should be not bigger than 5;
-        limit -- number of data points;
-        from_date -- the date from which to collect data
+        start_date -- the date from which to collect data
     return: list of dictionaries
     """
     symbols_txt = ",".join(symbols)
@@ -19,7 +18,16 @@ def get_stocks_fmp(apikey: str='apikey', symbols: list=['AAPL', 'MSFT', 'GOOG', 
     data = get_data_url(url=url)
     return data
 
-def get_stocks(apikey, symbols, from_date, step:int=5, with_progress: bool=False):
+def get_stocks(apikey: str='apikey', symbols: list=['AAPL', 'MSFT', 'GOOG', '018260.KS' 'SONY'], start_date: str='1986-01-01', 
+                step:int=5, with_progress: bool=False):
+    """
+    params:
+        apikey -- to access data from FMP;
+        symbols -- list of tickers of companies, can be bigger than 5;
+        start_date -- the date from which to collect data
+        with_progress -- if you want to monitor the progress
+    return: list of dictionaries
+    """
     data_frames = []
 
     symbols1 = symbols.copy()
@@ -37,7 +45,7 @@ def get_stocks(apikey, symbols, from_date, step:int=5, with_progress: bool=False
             symbols0 = symbols1
             symbols1 = []
 
-        data = get_stocks_fmp(apikey=apikey, symbols=symbols0, from_date=from_date)
+        data = get_stocks_fmp(apikey=apikey, symbols=symbols0, start_date=start_date)
             
         data_frames0 = []
 
