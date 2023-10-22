@@ -5,9 +5,17 @@ from ..courtois.fmp_url import get_data_url
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
 
-def get_stocks_fmp(apikey: str, symbols: list, from_date: str):
+def get_stocks_fmp(apikey: str='apikey', symbols: list=['AAPL', 'MSFT', 'GOOG', '018260.KS' 'SONY'], start_date: str='1986-01-01'):
+    """
+    params:
+        apikey -- to access data from FMP;
+        symbols -- list of tickers of companies, should be not bigger than 5;
+        limit -- number of data points;
+        from_date -- the date from which to collect data
+    return: list of dictionaries
+    """
     symbols_txt = ",".join(symbols)
-    url = (f'https://financialmodelingprep.com/api/v3/historical-price-full/{symbols_txt}?from={from_date}&apikey={apikey}')
+    url = (f'https://financialmodelingprep.com/api/v3/historical-price-full/{symbols_txt}?from={start_date}&apikey={apikey}')
     data = get_data_url(url=url)
     return data
 
