@@ -17,15 +17,15 @@ def plot_with_margin(data_frame, x: str, y: str, color: str, palette: dict, erro
         upper_bound='upper_bound'
         data_frame[upper_bound] = data_frame[y] + data_frame[error]/2
 
-    colors = set(data_frame[color])
+    colorss = set(data_frame[color])
 
-    if (colors != set(palette.keys())):
+    if (colorss != set(palette.keys())):
         print(f"The {color} column and the keys of palette are not same")
         return False
 
     go_scatters = []
 
-    for colour in colors:
+    for colour in colorss:
         if palette[colour][:3]=='rgb':
             fillcolour = 'rgba' + palette[colour][3:-1] + ', 0.3)'
         else:
