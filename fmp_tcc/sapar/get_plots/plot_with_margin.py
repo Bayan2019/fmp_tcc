@@ -5,7 +5,7 @@ import plotly.graph_objects as go
 
 from matplotlib import colors
 
-def plot_with_margin(data_frame, x: str, y: str, color: str, palette: dict, error: str=None, upper_bound: str=None, lower_bound: str=None):
+def plot_with_margin(data_frame, x: str, y: str, color: str, palette: dict, error: str=None, upper_bound: str=None, lower_bound: str=None, title: str='Continuous'):
 
     if (type(error)!=str):
         if ((type(upper_bound)!=str) or (type(lower_bound)!=str)):
@@ -56,6 +56,6 @@ def plot_with_margin(data_frame, x: str, y: str, color: str, palette: dict, erro
     fig = go.Figure(go_scatters)
     fig.update_layout(
         yaxis_title=y,
-        title=f"Continuous, {y}")
+        title=title)
     
     return fig
