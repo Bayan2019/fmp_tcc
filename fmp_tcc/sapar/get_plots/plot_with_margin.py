@@ -5,9 +5,9 @@ import plotly.graph_objects as go
 
 def plot_with_margin(data_frame, x: str, y: str, color: str, palette: dict, error: str=None, upper_bound: str=None, lower_bound: str=None):
 
-    if (~bool(error)):
-        if ((~bool(lower_bound)) or (~bool(upper_bound))):
-            print("There no error parameter you can use standard px.line")
+    if (type(error)!=str):
+        if ((type(upper_bound)!=str) or (type(lower_bound)!=str)):
+            print("No error and no bound parameters, you can use px.line")
             return False
     else:
         lower_bound='lower_bound'
