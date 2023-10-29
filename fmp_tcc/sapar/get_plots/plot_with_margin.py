@@ -54,7 +54,7 @@ def plot_with_margin(data_frame, x: str, y: str, color: str, palette: dict, erro
         go_scatters.append(
             go.Scatter(
                 name='Lower Bound', x=tmp_df[x], y=tmp_df[lower_bound], mode='lines',
-                line=dict(width=0),
+                line=dict(width=0), fillcolor=fillcolour,
                 fill='tonexty', showlegend=False
             ))
 
