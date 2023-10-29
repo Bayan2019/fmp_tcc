@@ -41,22 +41,22 @@ def plot_with_margin(data_frame, x: str, y: str, color: str, palette: dict, erro
                 name=str(colour), x=tmp_df[x], y=tmp_df[y], mode='lines',
                 line=dict(color=palette[colour])
             ))
+        # go_scatters.append(
+        #     go.Scatter(x=tmp_df[x]+tmp_df[x][::-1], # x, then x reversed
+        #                y=tmp_df[upper_bound]+tmp_df[lower_bound][::-1], # upper, then lower reversed
+        #                fill='toself', fillcolor=fillcolour, line=dict(color='rgba(255,255,255,0)'), showlegend=False
+        #     ))
         go_scatters.append(
-            go.Scatter(x=tmp_df[x]+tmp_df[x][::-1], # x, then x reversed
-                       y=tmp_df[upper_bound]+tmp_df[lower_bound][::-1], # upper, then lower reversed
-                       fill='toself', fillcolor=fillcolour, line=dict(color='rgba(255,255,255,0)'), showlegend=False
+            go.Scatter(
+                name='Upper Bound', x=tmp_df[x], y=tmp_df[upper_bound], mode='lines',
+                line=dict(width=0), showlegend=False
             ))
-        # go_scatters.append(
-        #     go.Scatter(
-        #         name='Upper Bound', x=tmp_df[x], y=tmp_df[upper_bound], mode='lines',
-        #         marker=dict(color=fillcolour), line=dict(width=0), showlegend=False
-        #     ))
-        # go_scatters.append(
-        #     go.Scatter(
-        #         name='Lower Bound', x=tmp_df[x], y=tmp_df[lower_bound], mode='lines',
-        #         marker=dict(color=fillcolour), line=dict(width=0), fillcolor=fillcolour,
-        #         fill='tonexty', showlegend=False
-        #     ))
+        go_scatters.append(
+            go.Scatter(
+                name='Lower Bound', x=tmp_df[x], y=tmp_df[lower_bound], mode='lines',
+                line=dict(width=0),
+                fill='tonexty', showlegend=False
+            ))
 
     fig = go.Figure(go_scatters)
     fig.update_layout(
