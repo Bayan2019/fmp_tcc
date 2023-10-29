@@ -3,7 +3,7 @@ import plotly.express as px
 from plotly.subplots import make_subplots
 import plotly.graph_objects as go
 
-def plot_coef_corr_countryGroup(data_frame, palette):
+def plot_coef_corr_countryGroup(data_frame, palette: dict):
     
     slope = {}
     correlation = {}
