@@ -31,7 +31,7 @@ def plot_with_margin(data_frame, x: str, y: str, color: str, palette: dict, erro
         else:
             # print(palette[colour])
             fillcolour = colors.to_rgb(palette[colour])
-            fillcolour = (int(fillcolour[0]), int(fillcolour[1]), int(fillcolour[2]), 0.3)
+            fillcolour = (fillcolour[0], fillcolour[1], fillcolour[2], 0.3)
             fillcolour = 'rgba' + str(fillcolour)
             
         tmp_df = data_frame[data_frame[color]==colour]
