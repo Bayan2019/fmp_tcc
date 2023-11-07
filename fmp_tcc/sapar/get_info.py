@@ -16,7 +16,8 @@ def company_profile(apikey: str='apikey', symbol: str='AAPL'):
     data = get_data_url(url=url)
     return data
 
-def get_fs_some(apikey: str='apikey', symbol: str='AAPL', period: str='annual', limit: int=10, finance: str='balance-sheet-statement'):
+def get_fs_some(apikey: str='apikey', symbol: str='AAPL', period: str='annual',
+                limit: int=10, finance: str='balance-sheet-statement'):
     """
     params:
         apikey -- to access data from FMP;

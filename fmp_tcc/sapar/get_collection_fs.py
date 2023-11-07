@@ -1,6 +1,6 @@
 import pandas as pd
 
-from ..courtois.fmp_url import get_data_url
+# from ..courtois.fmp_url import get_data_url
 from .get_info import company_profile, get_fs_some
 
 from datetime import datetime
@@ -172,12 +172,11 @@ def get_fs(apikey: str='apikey', ticks: list=['AAPL', 'MSFT'], period: str = 'an
             if with_progress:
                 i += 1;
 
-            company_profile = company_profile(apikey=apikey, symbol=ticker);
+            profile = company_profile(apikey=apikey, symbol=ticker);
 
-            if company_profile != []:
-                df.loc[df['symbol'] == ticker, 'sector'] = company_profile[0].get('sector', 'other');
-                df.loc[df['symbol'] == ticker, 'industry'] = company_profile[0].get('industry', 'other');
-
+            if profile != []:
+                df.loc[df['symbol'] == ticker, 'sector'] = profile[0].get('sector', 'other');
+                df.loc[df['symbol'] == ticker, 'industry'] = profile[0].get('industry', 'other');
                 if with_progress:
                     print(f"For ticker (sic) -- {ticker} : {str(i)} / {str(n)}");
 
