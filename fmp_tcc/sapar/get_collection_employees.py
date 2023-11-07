@@ -26,6 +26,7 @@ def get_employees_counts(apikey: str='apikey', ticks: list=['AAPL', 'MSFT'], per
         ticker_data = get_employees_number(apikey=apikey, symbol=ticker)
         employees.append(pd.DataFrame(ticker_data))
         if with_progress:
+            i += 1
             print(f"For {ticker}: {i} / {n}")
 
     employees_df = pd.concat(employees, axis=0)
