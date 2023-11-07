@@ -1,6 +1,7 @@
 import pandas as pd
 
 from ..courtois.fmp_url import get_data_url
+from .get_info import company_profile, get_fs_some
 
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
@@ -18,32 +19,6 @@ def calculate_months(start_date: str):
     difference = relativedelta(start_datetime, now)
     months = abs(difference.months) + abs(12*difference.years)
     return months
-
-def get_fs_some(apikey: str='apikey', symbol: str='AAPL', period: str='annual', limit: int=10, finance: str='balance-sheet-statement'):
-    """
-    params:
-        apikey -- to access data from FMP;
-        symbol -- ticker of company;
-        period -- either 'annual' or 'quarter';
-        limit -- number of data points;
-        finance -- can be 'balance-sheet-statement', or 'income-statement', or 'cash-flow-statement', or 'enterprise-values', 
-            or 'ratios'
-    return: list of dictionaries
-    """
-    url = (f'https://financialmodelingprep.com/api/v3/{finance}/{symbol}?period={period}&limit={limit}&apikey={apikey}')
-    data = get_data_url(url=url)
-    return data
-
-def company_profile(apikey: str='apikey', symbol: str='AAPL'):
-    """
-    params:
-        apikey -- to access data from FMP;
-        symbol -- ticker of company;
-    return: list of dictionaries
-    """
-    url = (f'https://financialmodelingprep.com/api/v3/profile/{symbol}?apikey={apikey}')
-    data = get_data_url(url=url)
-    return data
 
 def get_fs(apikey: str='apikey', ticks: list=['AAPL', 'MSFT'], period: str = 'annual', 
            with_progress: bool = False, include_sic: bool = False, 
